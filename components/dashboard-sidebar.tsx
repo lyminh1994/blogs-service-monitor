@@ -9,6 +9,7 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
+
 import { ChartBar as ChartBarIcon } from "../icons/chart-bar";
 import { Cog as CogIcon } from "../icons/cog";
 import { Lock as LockIcon } from "../icons/lock";
@@ -18,6 +19,7 @@ import { User as UserIcon } from "../icons/user";
 import { UserAdd as UserAddIcon } from "../icons/user-add";
 import { Users as UsersIcon } from "../icons/users";
 import { XCircle as XCircleIcon } from "../icons/x-circle";
+
 import Logo from "./logo";
 import NavItem from "./nav-item";
 
@@ -61,6 +63,21 @@ const items = [
     href: "/404",
     icon: <XCircleIcon fontSize="small" />,
     title: "Error",
+  },
+  {
+    href: "/pokemon/bulbasaur",
+    icon: <XCircleIcon fontSize="small" />,
+    title: "Bulbasaur dynamic",
+  },
+  {
+    href: "/pokemon/ssr/beedrill",
+    icon: <XCircleIcon fontSize="small" />,
+    title: "Beedrill SSR",
+  },
+  {
+    href: "/pokemon/ssg/ivysaur",
+    icon: <XCircleIcon fontSize="small" />,
+    title: "ivysaur SSG",
   },
 ];
 

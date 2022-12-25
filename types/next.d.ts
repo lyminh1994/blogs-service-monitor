@@ -1,4 +1,3 @@
-import type { EmotionCache } from "@emotion/cache";
 import type {
   NextComponentType,
   NextPageContext,
@@ -18,7 +17,6 @@ declare module "next" {
 
 declare module "next/app" {
   type AppLayoutProps<P = {}> = AppProps & {
-    emotionCache: EmotionCache;
     Component: NextLayoutComponentType;
   };
 }
