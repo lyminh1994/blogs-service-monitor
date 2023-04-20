@@ -10,8 +10,6 @@ export async function getStaticPaths() {
   const store = makeStore();
   const result = await store.dispatch(getPokemonList.initiate());
 
-  console.log(result.data);
-
   return {
     paths: result.data?.results
       .map((p) => `/pokemon/ssg/${p.name}`)
