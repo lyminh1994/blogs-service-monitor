@@ -2,8 +2,8 @@ import { ReactNode } from "react";
 import Head from "next/head";
 import { Box, Container, Typography } from "@mui/material";
 import DashboardLayout from "../components/dashboard-layout";
-import SettingsNotifications from "../components/settings/settings-notifications";
-import SettingsPassword from "../components/settings/settings-password";
+import SettingsNotifications from "../sections/settings/settings-notifications";
+import SettingsPassword from "../sections/settings/settings-password";
 
 const Page = () => (
   <>

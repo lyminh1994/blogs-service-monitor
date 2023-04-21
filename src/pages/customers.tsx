@@ -4,8 +4,8 @@ import Head from "next/head";
 import { Box, Container } from "@mui/material";
 
 import DashboardLayout from "../components/dashboard-layout";
-import CustomerListResults from "../components/customer/customer-list-results";
-import CustomerListToolbar from "../components/customer/customer-list-toolbar";
+import CustomerListResults from "../sections/customer/customer-list-results";
+import CustomerListToolbar from "../sections/customer/customer-list-toolbar";
 
 const customers = [
   {

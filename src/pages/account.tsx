@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Box, Container, Grid, Typography } from "@mui/material";
-import AccountProfile from "../components/account/account-profile";
-import AccountProfileDetails from "../components/account/account-profile-details";
+import AccountProfile from "../sections/account/account-profile";
+import AccountProfileDetails from "../sections/account/account-profile-details";
 import DashboardLayout from "../components/dashboard-layout";
 import { ReactNode } from "react";
 

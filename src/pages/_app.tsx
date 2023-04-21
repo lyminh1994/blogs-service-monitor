@@ -2,19 +2,16 @@ import { ReactNode } from "react";
 import { Provider } from "react-redux";
 import Head from "next/head";
 import { CacheProvider } from "@emotion/react";
-import { CssBaseline } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { CssBaseline } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
 
 import { wrapper } from "../lib/store";
 import { theme } from "../theme";
 import { createEmotionCache } from "../utils/create-emotion-cache";
-import { registerChartJs } from "../utils/register-chart-js";
 
 import type { AppLayoutProps } from "next/app";
-
-registerChartJs();
 
 const clientSideEmotionCache = createEmotionCache();
 
