@@ -1,110 +1,84 @@
+import { useCallback } from "react";
 import {
-  Box,
   Button,
   Card,
+  CardActions,
   CardContent,
   CardHeader,
   Checkbox,
   Divider,
   FormControlLabel,
-  Grid,
+  Stack,
   Typography,
+  Unstable_Grid2 as Grid,
 } from "@mui/material";
-import { useForm } from "react-hook-form";
 
 const SettingsNotifications = () => {
-  const { register, handleSubmit } = useForm();
+   const handleSubmit = useCallback((event: any) => {
+     event.preventDefault();
+   }, []);
 
-  const onSubmit = () => {
-    console.log("object");
-  };
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Card>
-        <CardHeader
-          subheader="Manage the notifications"
-          title="Notifications"
-        />
-        <Divider />
-        <CardContent>
-          <Grid container spacing={6} wrap="wrap">
-            <Grid
-              item
-              md={4}
-              sm={6}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-              xs={12}
-            >
-              <Typography color="textPrimary" gutterBottom variant="h6">
-                Notifications
-              </Typography>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    color="primary"
-                    defaultChecked
-                    {...register("email")}
-                  />
-                }
-                label="Email"
-              />
-              <FormControlLabel
-                control={<Checkbox color="primary" defaultChecked />}
-                label="Push Notifications"
-              />
-              <FormControlLabel control={<Checkbox />} label="Text Messages" />
-              <FormControlLabel
-                control={<Checkbox color="primary" defaultChecked />}
-                label="Phone calls"
-              />
-            </Grid>
-            <Grid
-              item
-              md={4}
-              sm={6}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-              xs={12}
-            >
-              <Typography color="textPrimary" gutterBottom variant="h6">
-                Messages
-              </Typography>
-              <FormControlLabel
-                control={<Checkbox color="primary" defaultChecked />}
-                label="Email"
-              />
-              <FormControlLabel
-                control={<Checkbox />}
-                label="Push Notifications"
-              />
-              <FormControlLabel
-                control={<Checkbox color="primary" defaultChecked />}
-                label="Phone calls"
-              />
-            </Grid>
-          </Grid>
-        </CardContent>
-        <Divider />
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            p: 2,
-          }}
-        >
-          <Button color="primary" variant="contained">
-            Save
-          </Button>
-        </Box>
-      </Card>
-    </form>
-  );
-};
+   return (
+     <form onSubmit={handleSubmit}>
+       <Card>
+         <CardHeader
+           subheader="Manage the notifications"
+           title="Notifications"
+         />
+         <Divider />
+         <CardContent>
+           <Grid container spacing={6} wrap="wrap">
+             <Grid xs={12} sm={6} md={4}>
+               <Stack spacing={1}>
+                 <Typography variant="h6">Notifications</Typography>
+                 <Stack>
+                   <FormControlLabel
+                     control={<Checkbox defaultChecked />}
+                     label="Email"
+                   />
+                   <FormControlLabel
+                     control={<Checkbox defaultChecked />}
+                     label="Push Notifications"
+                   />
+                   <FormControlLabel
+                     control={<Checkbox />}
+                     label="Text Messages"
+                   />
+                   <FormControlLabel
+                     control={<Checkbox defaultChecked />}
+                     label="Phone calls"
+                   />
+                 </Stack>
+               </Stack>
+             </Grid>
+             <Grid md={4} sm={6} xs={12}>
+               <Stack spacing={1}>
+                 <Typography variant="h6">Messages</Typography>
+                 <Stack>
+                   <FormControlLabel
+                     control={<Checkbox defaultChecked />}
+                     label="Email"
+                   />
+                   <FormControlLabel
+                     control={<Checkbox />}
+                     label="Push Notifications"
+                   />
+                   <FormControlLabel
+                     control={<Checkbox defaultChecked />}
+                     label="Phone calls"
+                   />
+                 </Stack>
+               </Stack>
+             </Grid>
+           </Grid>
+         </CardContent>
+         <Divider />
+         <CardActions sx={{ justifyContent: "flex-end" }}>
+           <Button variant="contained">Save</Button>
+         </CardActions>
+       </Card>
+     </form>
+   );
+ };
 
 export default SettingsNotifications;

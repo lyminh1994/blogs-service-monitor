@@ -10,11 +10,11 @@ import {
 } from "@mui/material";
 
 const user = {
-  avatar: "/static/images/avatars/avatar_6.png",
+  avatar: "/assets/avatars/avatar-anika-visser.png",
   city: "Los Angeles",
   country: "USA",
   jobTitle: "Senior Developer",
-  name: "Katarina Smith",
+  name: "Anika Visser",
   timezone: "GTM-7",
 };
 
@@ -31,29 +31,28 @@ const AccountProfile = () => (
         <Avatar
           src={user.avatar}
           sx={{
-            height: 64,
+            height: 80,
             mb: 2,
-            width: 64,
+            width: 80,
           }}
         />
-        <Typography color="textPrimary" gutterBottom variant="h5">
+        <Typography gutterBottom variant="h5">
           {user.name}
         </Typography>
-        <Typography color="textSecondary" variant="body2">
-          {`${user.city} ${user.country}`}
+        <Typography color="text.secondary" variant="body2">
+          {user.city} {user.country}
         </Typography>
-        <Typography color="textSecondary" variant="body2">
+        <Typography color="text.secondary" variant="body2">
           {user.timezone}
         </Typography>
       </Box>
     </CardContent>
     <Divider />
     <CardActions>
-      <Button color="primary" fullWidth variant="text">
+      <Button fullWidth variant="text">
         Upload picture
       </Button>
     </CardActions>
   </Card>
 );
-
 export default AccountProfile;

@@ -1,176 +1,268 @@
-import { ReactNode } from "react";
-import { nanoid } from "@reduxjs/toolkit";
+import { ReactNode, useCallback, useMemo, useState } from "react";
 import Head from "next/head";
-import { Box, Container } from "@mui/material";
+import { subDays, subHours } from "date-fns";
+import ArrowDownOnSquareIcon from "@heroicons/react/24/solid/ArrowDownOnSquareIcon";
+import ArrowUpOnSquareIcon from "@heroicons/react/24/solid/ArrowUpOnSquareIcon";
+import PlusIcon from "@heroicons/react/24/solid/PlusIcon";
+import {
+  Box,
+  Button,
+  Container,
+  Stack,
+  SvgIcon,
+  Typography,
+} from "@mui/material";
+import { useSelection } from "../hooks/use-selection";
+import DashboardLayout from "../layouts/dashboard/layout";
+import CustomersTable from "../sections/customer/customers-table";
+import CustomersSearch from "../sections/customer/customers-search";
+import { applyPagination } from "../utils/apply-pagination";
 
-import DashboardLayout from "../components/dashboard-layout";
-import CustomerListResults from "../sections/customer/customer-list-results";
-import CustomerListToolbar from "../sections/customer/customer-list-toolbar";
+const now = new Date();
 
-const customers = [
+const data = [
   {
-    id: nanoid(),
+    id: "5e887ac47eed253091be10cb",
     address: {
+      city: "Cleveland",
       country: "USA",
-      state: "West Virginia",
-      city: "Parkersburg",
+      state: "Ohio",
       street: "2849 Fulton Street",
     },
-    avatarUrl: "/static/images/avatars/avatar_3.png",
-    createdAt: 1555016400000,
-    email: "ekaterina.tankova@devias.io",
-    name: "Ekaterina Tankova",
+    avatar: "/assets/avatars/avatar-carson-darrin.png",
+    createdAt: subDays(subHours(now, 7), 1).getTime(),
+    email: "carson.darrin@devias.io",
+    name: "Carson Darrin",
     phone: "304-428-3097",
   },
   {
-    id: nanoid(),
+    id: "5e887b209c28ac3dd97f6db5",
     address: {
+      city: "Atlanta",
       country: "USA",
-      state: "Bristow",
-      city: "Iowa",
+      state: "Georgia",
       street: "1865  Pleasant Hill Road",
     },
-    avatarUrl: "/static/images/avatars/avatar_4.png",
-    createdAt: 1555016400000,
-    email: "cao.yu@devias.io",
-    name: "Cao Yu",
+    avatar: "/assets/avatars/avatar-fran-perez.png",
+    createdAt: subDays(subHours(now, 1), 2).getTime(),
+    email: "fran.perez@devias.io",
+    name: "Fran Perez",
     phone: "712-351-5711",
   },
   {
-    id: nanoid(),
+    id: "5e887b7602bdbc4dbb234b27",
     address: {
+      city: "North Canton",
       country: "USA",
-      state: "Georgia",
-      city: "Atlanta",
+      state: "Ohio",
       street: "4894  Lakeland Park Drive",
     },
-    avatarUrl: "/static/images/avatars/avatar_2.png",
-    createdAt: 1555016400000,
-    email: "alexa.richardson@devias.io",
-    name: "Alexa Richardson",
+    avatar: "/assets/avatars/avatar-jie-yan-song.png",
+    createdAt: subDays(subHours(now, 4), 2).getTime(),
+    email: "jie.yan.song@devias.io",
+    name: "Jie Yan Song",
     phone: "770-635-2682",
   },
   {
-    id: nanoid(),
+    id: "5e86809283e28b96d2d38537",
     address: {
-      country: "USA",
-      state: "Ohio",
-      city: "Dover",
+      city: "Madrid",
+      country: "Spain",
+      name: "Anika Visser",
       street: "4158  Hedge Street",
     },
-    avatarUrl: "/static/images/avatars/avatar_5.png",
-    createdAt: 1554930000000,
-    email: "anje.keizer@devias.io",
-    name: "Anje Keizer",
+    avatar: "/assets/avatars/avatar-anika-visser.png",
+    createdAt: subDays(subHours(now, 11), 2).getTime(),
+    email: "anika.visser@devias.io",
+    name: "Anika Visser",
     phone: "908-691-3242",
   },
   {
-    id: nanoid(),
+    id: "5e86805e2bafd54f66cc95c3",
     address: {
+      city: "San Diego",
       country: "USA",
-      state: "Texas",
-      city: "Dallas",
+      state: "California",
       street: "75247",
     },
-    avatarUrl: "/static/images/avatars/avatar_6.png",
-    createdAt: 1554757200000,
-    email: "clarke.gillebert@devias.io",
-    name: "Clarke Gillebert",
+    avatar: "/assets/avatars/avatar-miron-vitold.png",
+    createdAt: subDays(subHours(now, 7), 3).getTime(),
+    email: "miron.vitold@devias.io",
+    name: "Miron Vitold",
     phone: "972-333-4106",
   },
   {
-    id: nanoid(),
+    id: "5e887a1fbefd7938eea9c981",
     address: {
+      city: "Berkeley",
       country: "USA",
       state: "California",
-      city: "Bakerfield",
       street: "317 Angus Road",
     },
-    avatarUrl: "/static/images/avatars/avatar_1.png",
-    createdAt: 1554670800000,
-    email: "adam.denisov@devias.io",
-    name: "Adam Denisov",
+    avatar: "/assets/avatars/avatar-penjani-inyene.png",
+    createdAt: subDays(subHours(now, 5), 4).getTime(),
+    email: "penjani.inyene@devias.io",
+    name: "Penjani Inyene",
     phone: "858-602-3409",
   },
   {
-    id: nanoid(),
+    id: "5e887d0b3d090c1b8f162003",
     address: {
+      city: "Carson City",
       country: "USA",
-      state: "California",
-      city: "Redondo Beach",
+      state: "Nevada",
       street: "2188  Armbrester Drive",
     },
-    avatarUrl: "/static/images/avatars/avatar_7.png",
-    createdAt: 1554325200000,
-    email: "ava.gregoraci@devias.io",
-    name: "Ava Gregoraci",
+    avatar: "/assets/avatars/avatar-omar-darboe.png",
+    createdAt: subDays(subHours(now, 15), 4).getTime(),
+    email: "omar.darobe@devias.io",
+    name: "Omar Darobe",
     phone: "415-907-2647",
   },
   {
-    id: nanoid(),
+    id: "5e88792be2d4cfb4bf0971d9",
     address: {
+      city: "Los Angeles",
       country: "USA",
-      state: "Nevada",
-      city: "Las Vegas",
+      state: "California",
       street: "1798  Hickory Ridge Drive",
     },
-    avatarUrl: "/static/images/avatars/avatar_8.png",
-    createdAt: 1523048400000,
-    email: "emilee.simchenko@devias.io",
-    name: "Emilee Simchenko",
+    avatar: "/assets/avatars/avatar-siegbert-gottfried.png",
+    createdAt: subDays(subHours(now, 2), 5).getTime(),
+    email: "siegbert.gottfried@devias.io",
+    name: "Siegbert Gottfried",
     phone: "702-661-1654",
   },
   {
-    id: nanoid(),
+    id: "5e8877da9a65442b11551975",
     address: {
+      city: "Murray",
       country: "USA",
-      state: "Michigan",
-      city: "Detroit",
+      state: "Utah",
       street: "3934  Wildrose Lane",
     },
-    avatarUrl: "/static/images/avatars/avatar_9.png",
-    createdAt: 1554702800000,
-    email: "kwak.seong.min@devias.io",
-    name: "Kwak Seong-Min",
+    avatar: "/assets/avatars/avatar-iulia-albu.png",
+    createdAt: subDays(subHours(now, 8), 6).getTime(),
+    email: "iulia.albu@devias.io",
+    name: "Iulia Albu",
     phone: "313-812-8947",
   },
   {
-    id: nanoid(),
+    id: "5e8680e60cba5019c5ca6fda",
     address: {
+      city: "Salt Lake City",
       country: "USA",
       state: "Utah",
-      city: "Salt Lake City",
       street: "368 Lamberts Branch Road",
     },
-    avatarUrl: "/static/images/avatars/avatar_10.png",
-    createdAt: 1522702800000,
-    email: "merrile.burgett@devias.io",
-    name: "Merrile Burgett",
+    avatar: "/assets/avatars/avatar-nasimiyu-danai.png",
+    createdAt: subDays(subHours(now, 1), 9).getTime(),
+    email: "nasimiyu.danai@devias.io",
+    name: "Nasimiyu Danai",
     phone: "801-301-7894",
   },
 ];
 
-const Page = () => (
-  <>
-    <Head>
-      <title>Customers</title>
-    </Head>
-    <Box
-      component="main"
-      sx={{
-        flexGrow: 1,
-        py: 8,
-      }}
-    >
-      <Container maxWidth={false}>
-        <CustomerListToolbar />
-        <Box sx={{ mt: 3 }}>
-          <CustomerListResults customers={customers} />
-        </Box>
-      </Container>
-    </Box>
-  </>
-);
+const useCustomers = (page: number, rowsPerPage: number) => {
+  return useMemo(() => {
+    return applyPagination(data, page, rowsPerPage);
+  }, [page, rowsPerPage]);
+};
+
+const useCustomerIds = (customers: []) => {
+  return useMemo(() => {
+    return customers.map((customer: { id: string }) => customer.id);
+  }, [customers]);
+};
+
+const Page = () => {
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const customers: any = useCustomers(page, rowsPerPage);
+  const customersIds: any = useCustomerIds(customers);
+  const customersSelection = useSelection(customersIds);
+
+  const handlePageChange = useCallback((event: any, value: any) => {
+    setPage(value);
+  }, []);
+
+  const handleRowsPerPageChange = useCallback((event: any) => {
+    setRowsPerPage(event.target.value);
+  }, []);
+
+  return (
+    <>
+      <Head>
+        <title>Customers | Devias Kit</title>
+      </Head>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          py: 8,
+        }}
+      >
+        <Container maxWidth="xl">
+          <Stack spacing={3}>
+            <Stack direction="row" justifyContent="space-between" spacing={4}>
+              <Stack spacing={1}>
+                <Typography variant="h4">Customers</Typography>
+                <Stack alignItems="center" direction="row" spacing={1}>
+                  <Button
+                    color="inherit"
+                    startIcon={
+                      <SvgIcon fontSize="small">
+                        <ArrowUpOnSquareIcon />
+                      </SvgIcon>
+                    }
+                  >
+                    Import
+                  </Button>
+                  <Button
+                    color="inherit"
+                    startIcon={
+                      <SvgIcon fontSize="small">
+                        <ArrowDownOnSquareIcon />
+                      </SvgIcon>
+                    }
+                  >
+                    Export
+                  </Button>
+                </Stack>
+              </Stack>
+              <div>
+                <Button
+                  startIcon={
+                    <SvgIcon fontSize="small">
+                      <PlusIcon />
+                    </SvgIcon>
+                  }
+                  variant="contained"
+                >
+                  Add
+                </Button>
+              </div>
+            </Stack>
+            <CustomersSearch />
+            <CustomersTable
+              count={data.length}
+              items={customers}
+              onDeselectAll={customersSelection.handleDeselectAll}
+              onDeselectOne={customersSelection.handleDeselectOne}
+              onPageChange={handlePageChange}
+              onRowsPerPageChange={handleRowsPerPageChange}
+              onSelectAll={customersSelection.handleSelectAll}
+              onSelectOne={customersSelection.handleSelectOne}
+              page={page}
+              rowsPerPage={rowsPerPage}
+              selected={customersSelection.selected}
+            />
+          </Stack>
+        </Container>
+      </Box>
+    </>
+  );
+};
 
 Page.getLayout = (page: ReactNode) => <DashboardLayout>{page}</DashboardLayout>;
 

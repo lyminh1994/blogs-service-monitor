@@ -1,59 +1,61 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import {
-  Box,
   Button,
   Card,
+  CardActions,
   CardContent,
   CardHeader,
   Divider,
+  Stack,
   TextField,
 } from "@mui/material";
-import { useForm } from "react-hook-form";
 
 const SettingsPassword = () => {
-  const { register, handleSubmit } = useForm({
-    defaultValues: { password: "", confirm: "" },
+  const [values, setValues] = useState({
+    password: "",
+    confirm: "",
   });
 
-  const handleChange = () => {
-    console.log("first");
-  };
+  const handleChange = useCallback((event: any) => {
+    setValues((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
+  }, []);
+
+  const handleSubmit = useCallback((event: any) => {
+    event.preventDefault();
+  }, []);
 
   return (
-    <form onSubmit={handleSubmit(handleChange)}>
+    <form onSubmit={handleSubmit}>
       <Card>
         <CardHeader subheader="Update password" title="Password" />
         <Divider />
         <CardContent>
-          <TextField
-            fullWidth
-            label="Password"
-            margin="normal"
-            type="password"
-            variant="outlined"
-            {...register("password")}
-          />
-          <TextField
-            fullWidth
-            label="Confirm password"
-            margin="normal"
-            type="password"
-            variant="outlined"
-            {...register("confirm")}
-          />
+          <Stack spacing={3} sx={{ maxWidth: 400 }}>
+            <TextField
+              fullWidth
+              label="Password"
+              name="password"
+              onChange={handleChange}
+              type="password"
+              value={values.password}
+            />
+            <TextField
+              fullWidth
+              label="Password (Confirm)"
+              name="confirm"
+              onChange={handleChange}
+              type="password"
+              value={values.confirm}
+            />
+          </Stack>
         </CardContent>
         <Divider />
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            p: 2,
-          }}
-        >
-          <Button type="submit" color="primary" variant="contained">
-            Update
-          </Button>
-        </Box>
+        <CardActions sx={{ justifyContent: "flex-end" }}>
+          <Button variant="contained">Update</Button>
+        </CardActions>
       </Card>
     </form>
   );

@@ -1,14 +1,14 @@
 import { ReactNode } from "react";
 import Head from "next/head";
-import { Box, Container, Typography } from "@mui/material";
-import DashboardLayout from "../components/dashboard-layout";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import SettingsNotifications from "../sections/settings/settings-notifications";
 import SettingsPassword from "../sections/settings/settings-password";
+import DashboardLayout from "../layouts/dashboard/layout";
 
 const Page = () => (
   <>
     <Head>
-      <title>Settings</title>
+      <title>Settings | Devias Kit</title>
     </Head>
     <Box
       component="main"
@@ -18,13 +18,11 @@ const Page = () => (
       }}
     >
       <Container maxWidth="lg">
-        <Typography sx={{ mb: 3 }} variant="h4">
-          Settings
-        </Typography>
-        <SettingsNotifications />
-        <Box sx={{ pt: 3 }}>
+        <Stack spacing={3}>
+          <Typography variant="h4">Settings</Typography>
+          <SettingsNotifications />
           <SettingsPassword />
-        </Box>
+        </Stack>
       </Container>
     </Box>
   </>

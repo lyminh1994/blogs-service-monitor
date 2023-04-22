@@ -18,5 +18,6 @@ declare module "next" {
 declare module "next/app" {
   type AppLayoutProps<P = {}> = AppProps & {
     Component: NextLayoutComponentType;
+    emotionCache: EmotionCache;
   };
 }

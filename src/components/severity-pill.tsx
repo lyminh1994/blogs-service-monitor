@@ -4,8 +4,11 @@ type Color = "primary" | "secondary" | "error" | "info" | "warning" | "success";
 
 const SeverityPillRoot = styled("span")(
   ({ theme, ownerState }: { theme?: Theme; ownerState: { color: Color } }) => {
-    const backgroundColor = theme?.palette[ownerState.color].main;
-    const color = theme?.palette[ownerState.color].contrastText;
+    const backgroundColor = theme?.palette[ownerState.color].alpha12;
+    const color =
+      theme?.palette.mode === "dark"
+        ? theme?.palette[ownerState.color].main
+        : theme?.palette[ownerState.color].dark;
 
     return {
       alignItems: "center",
@@ -32,16 +35,19 @@ const SeverityPillRoot = styled("span")(
 );
 
 const SeverityPill = ({
-  children,
   color = "primary",
+  children,
+  ...other
 }: {
-  children: string;
   color: Color;
+  children: string;
 }) => {
   const ownerState = { color };
 
   return (
-    <SeverityPillRoot ownerState={ownerState}>{children}</SeverityPillRoot>
+    <SeverityPillRoot ownerState={ownerState} {...other}>
+      {children}
+    </SeverityPillRoot>
   );
 };
 
