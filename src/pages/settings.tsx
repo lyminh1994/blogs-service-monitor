@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 import Head from "next/head";
 import { Box, Container, Stack, Typography } from "@mui/material";
-import SettingsNotifications from "../sections/settings/settings-notifications";
-import SettingsPassword from "../sections/settings/settings-password";
-import DashboardLayout from "../layouts/dashboard/layout";
+import SettingsNotifications from "sections/settings/settings-notifications";
+import SettingsPassword from "sections/settings/settings-password";
+import DashboardLayout from "layouts/dashboard/layout";
 
 const Page = () => (
   <>

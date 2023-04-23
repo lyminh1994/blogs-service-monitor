@@ -16,7 +16,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import AuthLayout from "../../layouts/auth/layout";
+import AuthLayout from "layouts/auth/layout";
 
 const Page = () => {
   const router = useRouter();

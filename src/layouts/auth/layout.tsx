@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import NextLink from "next/link";
 import Image from "next/image";
 import { Box, Typography, Unstable_Grid2 as Grid } from "@mui/material";
-import { Logo } from "../../components/logo";
+import { Logo } from "components/logo";
 
 // TODO: Change subtitle text
 

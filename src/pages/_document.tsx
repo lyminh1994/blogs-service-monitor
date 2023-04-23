@@ -7,7 +7,7 @@ import Document, {
   NextScript,
 } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
-import { createEmotionCache } from "../utils/create-emotion-cache";
+import { createEmotionCache } from "utils/create-emotion-cache";
 
 class CustomDocument extends Document {
   render() {

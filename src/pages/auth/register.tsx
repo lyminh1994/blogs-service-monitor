@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Box, Button, Link, Stack, TextField, Typography } from "@mui/material";
-import AuthLayout from "../../layouts/auth/layout";
+import AuthLayout from "layouts/auth/layout";
 import { ReactNode } from "react";
 
 const Page = () => {

@@ -13,8 +13,8 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import Scrollbar from "../../components/scrollbar";
-import { getInitials } from "../../utils/get-initials";
+import Scrollbar from "components/scrollbar";
+import { getInitials } from "utils/get-initials";
 
 const CustomersTable = ({
   count = 0,

@@ -62,6 +62,7 @@ const AccountProfileDetails = () => {
                 <TextField
                   fullWidth
                   helperText="Please specify the first name"
+                  error={true}
                   label="First name"
                   name="firstName"
                   onChange={handleChange}

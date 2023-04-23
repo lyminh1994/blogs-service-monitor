@@ -7,9 +7,9 @@ import {
   Typography,
   Unstable_Grid2 as Grid,
 } from "@mui/material";
-import DashboardLayout from "../layouts/dashboard/layout";
-import AccountProfile from "../sections/account/account-profile";
-import AccountProfileDetails from "../sections/account/account-profile-details";
+import DashboardLayout from "layouts/dashboard/layout";
+import AccountProfile from "sections/account/account-profile";
+import AccountProfileDetails from "sections/account/account-profile-details";
 
 const Page = () => (
   <>
