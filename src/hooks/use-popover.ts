@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 
-export function usePopover() {
+export const usePopover = () => {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -23,4 +23,4 @@ export function usePopover() {
     handleToggle,
     open,
   };
-}
+};

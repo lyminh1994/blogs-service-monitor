@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import Head from "next/head";
 import { subDays, subHours } from "date-fns";
 import { Box, Container, Unstable_Grid2 as Grid } from "@mui/material";
-import DashboardLayout from "layouts/dashboard/layout";
+import { DashboardLayout } from "layouts/dashboard/layout";
 import OverviewBudget from "sections/overview/overview-budget";
 import OverviewLatestOrders from "sections/overview/overview-latest-orders";
 import OverviewLatestProducts from "sections/overview/overview-latest-products";
@@ -17,7 +17,7 @@ const now = new Date();
 const Page = () => (
   <>
     <Head>
-      <title>Overview | Devias Kit</title>
+      <title>Overview</title>
     </Head>
     <Box
       component="main"

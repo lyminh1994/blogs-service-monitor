@@ -16,7 +16,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import AuthLayout from "layouts/auth/layout";
+import { Layout as AuthLayout } from "layouts/auth/layout";
 
 const Page = () => {
   const router = useRouter();
@@ -56,7 +56,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Login | Devias Kit</title>
+        <title>Login</title>
       </Head>
       <Box
         sx={{

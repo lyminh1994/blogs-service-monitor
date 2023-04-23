@@ -16,8 +16,8 @@ import {
   TableRow,
   Theme,
 } from "@mui/material";
-import Scrollbar from "components/scrollbar";
-import SeverityPill from "components/severity-pill";
+import { Scrollbar } from "components/scrollbar";
+import { SeverityPill } from "components/severity-pill";
 
 type Order = {
   createdAt: number;

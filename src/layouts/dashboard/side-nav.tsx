@@ -15,11 +15,17 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { Logo } from "../../components/logo";
-import Scrollbar from "../../components/scrollbar";
+import { Scrollbar } from "../../components/scrollbar";
 import { items } from "./config";
-import SideNavItem from "./side-nav-item";
+import { SideNavItem } from "./side-nav-item";
 
-const SideNav = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
+export const SideNav = ({
+  open,
+  onClose,
+}: {
+  open: boolean;
+  onClose: () => void;
+}) => {
   const pathname = usePathname();
   const lgUp = useMediaQuery((theme: Theme) => theme.breakpoints.up("lg"));
 
@@ -143,6 +149,7 @@ const SideNav = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
               src="/assets/devias-kit-pro.png"
               width={160}
               height={136}
+              priority
             />
           </Box>
           <Button
@@ -203,5 +210,3 @@ const SideNav = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
     </Drawer>
   );
 };
-
-export default SideNav;

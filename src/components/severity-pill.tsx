@@ -34,7 +34,7 @@ const SeverityPillRoot = styled("span")(
   }
 );
 
-const SeverityPill = ({
+export const SeverityPill = ({
   color = "primary",
   children,
   ...other
@@ -50,5 +50,3 @@ const SeverityPill = ({
     </SeverityPillRoot>
   );
 };
-
-export default SeverityPill;

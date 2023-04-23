@@ -1,11 +1,11 @@
+import { ReactNode } from "react";
 import Head from "next/head";
 import NextLink from "next/link";
 import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Box, Button, Link, Stack, TextField, Typography } from "@mui/material";
-import AuthLayout from "layouts/auth/layout";
-import { ReactNode } from "react";
+import { Layout as AuthLayout } from "layouts/auth/layout";
 
 const Page = () => {
   const router = useRouter();
@@ -38,7 +38,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Register | Devias Kit</title>
+        <title>Register</title>
       </Head>
       <Box
         sx={{

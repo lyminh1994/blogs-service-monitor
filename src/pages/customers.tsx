@@ -13,7 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useSelection } from "hooks/use-selection";
-import DashboardLayout from "layouts/dashboard/layout";
+import { DashboardLayout } from "layouts/dashboard/layout";
 import CustomersTable from "sections/customer/customers-table";
 import CustomersSearch from "sections/customer/customers-search";
 import { applyPagination } from "utils/apply-pagination";
@@ -193,7 +193,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Customers | Devias Kit</title>
+        <title>Customers</title>
       </Head>
       <Box
         component="main"

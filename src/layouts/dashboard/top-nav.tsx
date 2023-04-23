@@ -15,12 +15,12 @@ import {
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import { usePopover } from "hooks/use-popover";
-import AccountPopover from "./account-popover";
+import { AccountPopover } from "./account-popover";
 
 const SIDE_NAV_WIDTH = 280;
 const TOP_NAV_HEIGHT = 64;
 
-const TopNav = ({ onNavOpen }: { onNavOpen: () => void }) => {
+export const TopNav = ({ onNavOpen }: { onNavOpen: () => void }) => {
   const lgUp = useMediaQuery((theme: Theme) => theme.breakpoints.up("lg"));
   const accountPopover = usePopover();
 
@@ -107,5 +107,3 @@ const TopNav = ({ onNavOpen }: { onNavOpen: () => void }) => {
     </>
   );
 };
-
-export default TopNav;

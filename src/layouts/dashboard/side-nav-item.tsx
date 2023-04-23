@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import NextLink from "next/link";
 import { Box, ButtonBase } from "@mui/material";
 
-const SideNavItem = ({
+export const SideNavItem = ({
   active = false,
   disabled,
   external,
@@ -93,5 +93,3 @@ const SideNavItem = ({
     </li>
   );
 };
-
-export default SideNavItem;

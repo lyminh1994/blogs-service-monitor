@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Router from "next/router";
 import nProgress from "nprogress";
 
-export function useNProgress() {
+export const useNProgress = () => {
   useEffect(() => {
     Router.events.on("routeChangeStart", nProgress.start);
     Router.events.on("routeChangeError", nProgress.done);
@@ -14,4 +14,4 @@ export function useNProgress() {
       Router.events.off("routeChangeComplete", nProgress.done);
     };
   }, []);
-}
+};

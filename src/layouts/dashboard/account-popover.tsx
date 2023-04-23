@@ -9,13 +9,15 @@ import {
   Typography,
 } from "@mui/material";
 
-interface AccountPopoverProps {
+export const AccountPopover = ({
+  anchorEl,
+  onClose,
+  open,
+}: {
   anchorEl?: Element | ((element: Element) => Element) | null;
   onClose?: (event?: {}, reason?: "backdropClick" | "escapeKeyDown") => void;
   open: boolean;
-}
-
-const AccountPopover = ({ anchorEl, onClose, open }: AccountPopoverProps) => {
+}) => {
   const router = useRouter();
 
   const handleSignOut = useCallback(() => {
@@ -61,5 +63,3 @@ const AccountPopover = ({ anchorEl, onClose, open }: AccountPopoverProps) => {
     </Popover>
   );
 };
-
-export default AccountPopover;

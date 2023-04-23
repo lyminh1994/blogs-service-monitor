@@ -42,6 +42,7 @@ const Page = () => (
               }}
               width={400}
               height={400}
+              priority
             />
           </Box>
           <Typography align="center" sx={{ mb: 3 }} variant="h3">

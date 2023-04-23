@@ -6,7 +6,7 @@ import { Logo } from "components/logo";
 
 // TODO: Change subtitle text
 
-const Layout = ({ children }: { children: ReactNode }) => (
+export const Layout = ({ children }: { children: ReactNode }) => (
   <Box
     component="main"
     sx={{
@@ -88,11 +88,10 @@ const Layout = ({ children }: { children: ReactNode }) => (
             src="/assets/auth-illustration.svg"
             width={624}
             height={536}
+            priority
           />
         </Box>
       </Grid>
     </Grid>
   </Box>
 );
-
-export default Layout;
