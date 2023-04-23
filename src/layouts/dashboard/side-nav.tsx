@@ -141,8 +141,8 @@ const SideNav = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
             <Image
               alt="Go to pro"
               src="/assets/devias-kit-pro.png"
-              width={64}
-              height={64}
+              width={160}
+              height={136}
             />
           </Box>
           <Button

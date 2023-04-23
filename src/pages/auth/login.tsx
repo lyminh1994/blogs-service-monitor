@@ -149,7 +149,7 @@ const Page = () => {
                 >
                   Skip authentication
                 </Button>
-                <Alert color="success" severity="info" sx={{ mt: 3 }}>
+                <Alert color="info" severity="info" sx={{ mt: 3 }}>
                   <div>
                     You can use <b>demo@devias.io</b> and password{" "}
                     <b>Password123!</b>

@@ -86,8 +86,8 @@ const Layout = ({ children }: { children: ReactNode }) => (
           <Image
             alt=""
             src="/assets/auth-illustration.svg"
-            width={64}
-            height={64}
+            width={624}
+            height={536}
           />
         </Box>
       </Grid>
