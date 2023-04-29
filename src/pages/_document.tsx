@@ -7,7 +7,7 @@ import Document, {
   NextScript,
 } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
-import { createEmotionCache } from "utils/create-emotion-cache";
+import createEmotionCache from "utils/create-emotion-cache";
 
 class CustomDocument extends Document {
   render() {
@@ -63,7 +63,6 @@ CustomDocument.getInitialProps = async (ctx: DocumentContext) => {
 
   ctx.renderPage = () =>
     originalRenderPage({
-      // eslint-disable-next-line react/no-danger
       enhanceApp: (App: any) => (props) =>
         <App emotionCache={cache} {...props} />,
     });
@@ -72,9 +71,8 @@ CustomDocument.getInitialProps = async (ctx: DocumentContext) => {
   const emotionStyles = extractCriticalToChunks(initialProps.html);
   const emotionStyleTags = emotionStyles.styles.map((style) => (
     <style
-      data-emotion={`${style.key} ${style.ids.join(" ")}`}
       key={style.key}
-      // eslint-disable-next-line react/no-danger
+      data-emotion={`${style.key} ${style.ids.join(" ")}`}
       dangerouslySetInnerHTML={{ __html: style.css }}
     />
   ));

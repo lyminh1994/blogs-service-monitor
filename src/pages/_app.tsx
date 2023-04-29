@@ -7,7 +7,7 @@ import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { useNProgress } from "hooks/use-nprogress";
 import { createTheme } from "theme";
-import { createEmotionCache } from "utils/create-emotion-cache";
+import createEmotionCache from "utils/create-emotion-cache";
 import "simplebar-react/dist/simplebar.min.css";
 
 import type { AppLayoutProps } from "next/app";
