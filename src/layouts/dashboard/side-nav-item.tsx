@@ -2,6 +2,15 @@ import { ReactNode } from "react";
 import NextLink from "next/link";
 import { Box, ButtonBase } from "@mui/material";
 
+type SideNavItemProps = {
+  active: boolean;
+  disabled: boolean;
+  external: boolean;
+  icon: ReactNode;
+  path: string;
+  title: Required<string>;
+};
+
 export const SideNavItem = ({
   active = false,
   disabled,
@@ -9,14 +18,7 @@ export const SideNavItem = ({
   icon,
   path,
   title,
-}: {
-  active: boolean;
-  disabled: boolean;
-  external: boolean;
-  icon: ReactNode;
-  path: string;
-  title: Required<string>;
-}) => {
+}: SideNavItemProps) => {
   const linkProps = path
     ? external
       ? {

@@ -13,6 +13,7 @@ declare module "@mui/material/styles/createPalette" {
     getContrastText?: (background: string) => string;
     augmentColor?: (options: PaletteAugmentColorOptions) => PaletteColor;
   }
+
   interface PaletteColor {
     lightest: string;
     darkest: string;
@@ -22,6 +23,7 @@ declare module "@mui/material/styles/createPalette" {
     alpha30?: string;
     alpha50?: string;
   }
+
   interface TypeAction {
     hoverOpacity?: number;
     selectedOpacity?: number;

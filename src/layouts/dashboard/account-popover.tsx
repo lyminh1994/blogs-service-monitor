@@ -52,7 +52,7 @@ export const AccountPopover = ({
         disablePadding
         dense
         sx={{
-          p: "8px",
+          py: 1,
           "& > *": {
             borderRadius: 1,
           },

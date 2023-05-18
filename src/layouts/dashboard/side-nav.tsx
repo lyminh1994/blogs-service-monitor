@@ -2,7 +2,7 @@ import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import ArrowTopRightOnSquareIcon from "@heroicons/react/24/solid/ArrowTopRightOnSquareIcon";
-import ChevronUpDownIcon from "@heroicons/react/24/solid/ChevronUpDownIcon";
+import ChevronDownIcon from "@heroicons/react/24/solid/ChevronDownIcon";
 import {
   Box,
   Button,
@@ -50,17 +50,6 @@ export const SideNav = ({
       >
         <Box sx={{ p: 3 }}>
           <Box
-            component={NextLink}
-            href="/"
-            sx={{
-              display: "inline-flex",
-              height: 32,
-              width: 32,
-            }}
-          >
-            <Logo />
-          </Box>
-          <Box
             sx={{
               alignItems: "center",
               backgroundColor: "rgba(255, 255, 255, 0.04)",
@@ -72,6 +61,14 @@ export const SideNav = ({
               p: "12px",
             }}
           >
+            <Box
+              sx={{
+                height: 32,
+                width: 32,
+              }}
+            >
+              <Logo />
+            </Box>
             <div>
               <Typography color="inherit" variant="subtitle1">
                 Devias
@@ -81,7 +78,7 @@ export const SideNav = ({
               </Typography>
             </div>
             <SvgIcon fontSize="small" sx={{ color: "neutral.500" }}>
-              <ChevronUpDownIcon />
+              <ChevronDownIcon />
             </SvgIcon>
           </Box>
         </Box>

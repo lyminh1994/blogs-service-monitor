@@ -67,7 +67,6 @@ const AccountProfileDetails = () => {
                   name="firstName"
                   onChange={handleChange}
                   required
-                  value={values.firstName}
                 />
               </Grid>
               <Grid xs={12} md={6}>
